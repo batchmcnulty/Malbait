@@ -35,19 +35,19 @@ Malbait creates a series of fake servers on selected or default TCP and, if sele
 
 These run as background processes, so you will have to either switch off your computer or use the shell's "kill" (or, better still, "skill") command to get rid of them. You can monitor them with netstat. I reccomend:
 
-  sudo netstat -anp|grep perl
+  _sudo netstat -anp|grep perl
 
 to see what's listening, and 
 
-  sudo skill -9 perl
+  _sudo skill -9 perl
 
 to kill them off when you've had enough. 
 
 **NB: If you use install.sh to install this program, you will have to run**
 
-_sudo skill -9 malbait_
+_sudo skill -9 malbait
 
-**instead. though you can still monitor it with:** _sudo netstat -anp|grep perl__
+**instead. though you can still monitor it with:** _sudo netstat -anp|grep perl
 
 Alternatively you can just shut down the machine. Obviously don't use malbait while using perl for anything else! I reccomend a dedicated "bait" machine, either something small like a Raspberry Pi running the default ports, or a big computer running as many ports as you can listen on (preferably all of them).
 
@@ -57,26 +57,25 @@ It is VERY STRONGLY reccomended that you use this program in superuser mode, eit
 
 It's invoked like this 
 
-  malbait -parameters
+  _malbait -foo
 
 if you run it without parameters it will spit out a lengthy text explaining usage further. If you want to get started "out of the box" run 
 
-  malbait -defaults
+  _malbait -defaults
 
-this will open its' default ports and create servers wherever possible. 
+This will open its' default ports and create servers wherever possible. 
 
 Malbait can create dummy servers for Telnet, FTP, SMTP, POP3, BGP, HTTP (not brilliantly), TR-69 (not brilliantly), imap, systat, echo, and the old ascii "time" server. By default these are opened on all of their default ports, but you can specify ports for them.
 
 You can also open a range of ports, ie, 
 
-  malbait -ports:1-1024 
+  _malbait -ports:1-1024 
 
 Will open ports 1-1024 (the "well-known" or "restricted" ports) and create fake servers where appropriate.
 
-
 Use of malbait is only restricted by the amount of memory you have. The  -trans_proto:tcpudp  and  -ports: options gives you the power to watch every single port if you have a hardcore enough machine; or crash your computer if you don't. I find that my little Lenovo x200 notepad can handle about 6000 ports or so before it starts to go bonkers, but your mileage may vary. Want to see how powerful your new box REALLY is? Malbait can provide a benchmark - personally I'd love to see what happens on a machine running 
 
-  malbait -ports:1-65535 -trans_proto:tcpudp
+  _malbait -ports:1-65535 -trans_proto:tcpudp
 
 on a very powerful computer - in my experience with just 10% of that, there's definitely more malicious UDP traffic out there (mainly dickheads trying to scam free phone calls it seems), and telnet is an absolute petri dish, but I'd love to see a survey of the uncharted territory beyond, if anyone has the horsepower (and the ability and balls / ovaries to completely disable their firewall!)
 
@@ -109,11 +108,11 @@ Feel free to replace the default webpage.html with your own, of course - while y
 
 The -transblank options allow you to override fake server creation. So if you invoke 
 
-  malbait.pl -port:23 -proto:transblank
+  _malbait.pl -port:23 -proto:transblank
 
 or
 
-  malbait.pl -proto:telnet -transblank
+  _malbait.pl -proto:telnet -transblank
 
 malbait will transmit the closest thing to a blank response (a single, solitary carraige return) to clients instead of creating a "Telnet server".
 
