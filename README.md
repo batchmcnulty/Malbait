@@ -33,7 +33,7 @@ Malbait is a honeypot, or "malware bait" program. It is designed to waste the ti
 
 Malbait creates a series of fake servers on selected or default TCP and, if selected, UDP ports. If anyone or anything connects to them, their input will be recorded in the logfiles.
 
-These run as background processes, so you will have to use the shell's "kill" command to get rid of them. You can monitor them with netstat. I reccomend:
+These run as background processes, so you will have to either switch off your computer or use the shell's "kill" (or, better still, "skill") command to get rid of them. You can monitor them with netstat. I reccomend:
 
   sudo netstat -anp|grep perl
 
@@ -41,7 +41,15 @@ to see what's listening, and
 
   sudo skill -9 perl
 
-to kill them off when you've had enough. Alternatively you can just shut down the machine. Obviously don't use malbait while using perl for anything else! I reccomend a dedicated "bait" machine, either something small like a Raspberry Pi running the default ports, or a big computer running as many ports as you can listen on (preferably all of them).
+to kill them off when you've had enough. 
+
+# NB: If you use install.sh to install this program, you will have to run 
+
+# sudo skill -9 malbait 
+
+# instead. though you can still monitor it with sudo netstat -anp|grep perl
+
+Alternatively you can just shut down the machine. Obviously don't use malbait while using perl for anything else! I reccomend a dedicated "bait" machine, either something small like a Raspberry Pi running the default ports, or a big computer running as many ports as you can listen on (preferably all of them).
 
 Malbait defaults to TCP, but can support UDP on its own and both running side-by-side. 
 
