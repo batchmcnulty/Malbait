@@ -5,6 +5,10 @@ README for malbait, 2/10/17
 
 Welcome to malbait, your one-stop, simple perl honeypot!
 
+QUICK START!
+For commercial use, I recommend running this program in "-defaults" mode on a small, cheap, permanently-on computer such as a Raspberry Pi or even an ancient Asus EEE-PC. If any arseholes start sniffing around in your network, you'll soon find out. This is especially useful if you have a wireless network, though I also reccomend beefing up security generally if this is the case.
+--------------------------------------------------------------------------------------------------------------
+
 
 1) What malbait is
 2) What malbait does
@@ -22,7 +26,6 @@ Welcome to malbait, your one-stop, simple perl honeypot!
 
 Malbait is a honeypot, or "malware bait" program. It is designed to waste the time of hackers and monitor hostile traffic on the internet (or your LAN). 
 
-For commercial use, I recommend running this program in "-defaults" mode on a small, cheap, permanently-on computer such as a Raspberry Pi or even an ancient Asus EEE-PC. If any arseholes start sniffing around in your network, you'll soon find out. This is especially useful if you have a wireless network, though I also reccomend beefing up security generally if this is the case.
 --------------------------------------------------------------------------------------------------------------
 
 2) What malbait does
