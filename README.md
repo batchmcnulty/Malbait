@@ -17,8 +17,6 @@ Welcome to malbait, your one-stop, simple perl honeypot!
 9) Log files
 10) Future versions
 
-
-
 --------------------------------------------------------------------------------------------------------------
 1) What malbait is.
 
@@ -83,6 +81,7 @@ If you try to open, say, an FTP server in UDP mode, ( malbait -proto:ftp -trans_
 Hacktime is a bit of a joke inspired by the film "Kung Fury". It creates NTP time servers, both old-school and new-fashioned, and transmits either all 1s or all FFs, the idea being to emulate the rollover date for the Unix Millenium ("hacktime-2036") or a freshly booted system ("hacktime-1900"). Obviously the NTP server is a lot more complicated than that and it probably won't work, but it will definitely confuse any hackers who attack you thinking you are an NTP server!
 
 Fuzz is just that - an attempt to mess with automated attacks by throwing random garbage at them. Again, this is experimental and I don't necceserily take it massively seriously, but I thought someone might find it useful so it stays in.
+
 --------------------------------------------------------------------------------------------------------------
 
 5) The HTTP server
@@ -127,8 +126,6 @@ Althogh you can save a lot of memory this way, it is NOT reccomended - nmap is k
 -report:filename.txt Allows you to name your own report files.
 
 -recvbuffer:nn: Set an internal variable that buffers recv (recieved bytes) to value nn. Default is 1024, so if you want to guzzle more than 1k at a time (not an unreasonable desire), this is where you change it.
-
-
 
 --------------------------------------------------------------------------------------------------------------
 
