@@ -7,7 +7,7 @@ Welcome to malbait, your one-stop, simple perl honeypot!
 
 QUICK START!
 -
-For commercial use, I recommend running this program in "-defaults" mode with Superuser privileges (sudo) on a small, cheap, permanently-on computer such as a Raspberry Pi or even an ancient Asus EEE-PC. If any arseholes start sniffing around in your network, you'll soon find out. This is especially useful if you have a wireless network, though I also reccomend beefing up security generally if this is the case.
+For commercial use, I recommend running this program in "-defaults" mode with Superuser privileges (sudo) on a small, cheap, permanently-on computer such as a Raspberry Pi or even an ancient Asus EEE-PC connected to the network you wish to defend. If any arseholes start sniffing around in your network, you'll soon find out. This is especially useful if you have a wireless network, though I also reccomend beefing up security generally if this is the case.
 --------------------------------------------------------------------------------------------------------------
 
 
