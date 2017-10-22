@@ -43,11 +43,11 @@ to see what's listening, and
 
 to kill them off when you've had enough. 
 
-# NB: If you use install.sh to install this program, you will have to run 
+**NB: If you use install.sh to install this program, you will have to run**
 
-# sudo skill -9 malbait 
+_sudo skill -9 malbait_
 
-# instead. though you can still monitor it with sudo netstat -anp|grep perl
+**instead. though you can still monitor it with:** _sudo netstat -anp|grep perl__
 
 Alternatively you can just shut down the machine. Obviously don't use malbait while using perl for anything else! I reccomend a dedicated "bait" machine, either something small like a Raspberry Pi running the default ports, or a big computer running as many ports as you can listen on (preferably all of them).
 
