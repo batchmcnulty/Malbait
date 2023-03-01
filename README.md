@@ -2,8 +2,11 @@
 TCP/UDP Honeypot program implemented in Perl
 
 README for malbait, 2/10/17
+
 2023 update: people have been asking for my Bitcoin address, it is  1PEDKUiUTxGNJ3XTPfXCTAjpzVzX1VZAme
-Sorry I cant work on this as much s before btw. Having trouble finding a properly private internet connection! 
+
+Sorry I cant work on this as much as before btw. Having trouble finding a properly private internet connection! 
+
 
 Welcome to malbait, your one-stop, simple perl honeypot!
 
