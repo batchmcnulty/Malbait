@@ -5,6 +5,8 @@ README for malbait, 2/10/17
 
 2023 update: people have been asking for my Bitcoin address, it is  1PEDKUiUTxGNJ3XTPfXCTAjpzVzX1VZAme
 
+Here's an alternative, also for BTC, as I've been getting reports of bitcoin wallets not supporting certain addresses: 3A7yuqBcPAcVEM59bNAVQdTCmkxRb5JRgE
+
 Sorry I cant work on this as much as before btw. Having trouble finding a properly private internet connection! 
 
 
