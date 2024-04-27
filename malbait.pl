@@ -112,6 +112,8 @@ if (scalar @input <1)	{
 	die "\n";
 }
 
+
+
 @input_matches = grep { /-help/} @input;
 if ($input_matches[0] =~ '-help')	{
 	PrintUsagePage();
@@ -129,6 +131,61 @@ if ($input_matches[0] =~ '-defaults')	{
 	print "\n DEFAULT MODE. Will generate a set of UDP and TCP servers.";
 	$all_defaults = "YES"
 }
+
+my $command = "";
+my $email_mode;
+my $cmd;
+my $email_password;
+my $email_temp;
+
+my $from_address;
+my $to_address;
+my $smtp_server;
+my $smtp_port;
+
+my @email_data;
+my $email_floop;
+
+@input_matches = grep { /-email_pass:/} @input;
+if ($input_matches[0] =~ '-email_pass:')	{
+	$email_mode = "True";
+	$email_floop = 0;
+	print ("Email mode selected. Password:");
+	$email_password = substr ($input_matches[0], 12); 
+	print $email_password;
+	print ("\n");
+	open EMAIL, "emaildata.txt" or die "\n\nReality failure error. Couldn't open emaildata.txt.\n\n";
+	while (<EMAIL>)	{
+		$email_temp .= $_;
+		chomp ($_);
+		@email_data[$email_floop] = $_;
+		$email_floop ++;
+	}
+	$from_address = @email_data[0];
+	$to_address = @email_data[1];
+	$smtp_server = @email_data[2];
+	$smtp_port = @email_data[3];
+	
+	print "\n$from_address";
+	print "\n$to_address";
+	print "\n$smtp_server";
+	print "\n$smtp_port";
+	print "\n\n email_mode: $email_mode";
+}
+	
+	#	$cmd = "mail_report.py ";  
+	#	$cmd .= $from_address;
+	#	$cmd .= " ";
+	#	$cmd .= $to_address;
+	#	$cmd .= " ";
+	#	$cmd .= $smtp_server;
+	#	$cmd .= " ";
+	#	$cmd .= $smtp_port;
+	#	$cmd .= " ";
+	#	$cmd .= $email_password;
+	#	$cmd .= " ";
+
+
 
 @input_matches = grep { /-maxreq:/} @input;
 if ($input_matches[0] =~ '-maxreq:')	{
@@ -496,6 +553,9 @@ sub PrintUsagePage	{
 	print "\n";
 	print "\n Usage: ";
 	print "\n";
+	print "\n -email_pass: blahblah \t Activates EMAIL MODE. Enter password after \"-email_pass:\", load other email info from emaildata.txt";
+	print "\n";
+	
 	print "\n -ports:xxx-yyy \t Selects range of ports to watch.";
 	#print "\n ";
 	print "\n -ports:xx,yy,zz \t Selects list of ports to watch.";
@@ -535,7 +595,7 @@ sub PrintUsagePage	{
 	print "\n -whois: Does a WHOIS query on all clients. Warning: It WILL operate repeatedly on ";
 	print "UDP clients that remain connected. Results go in NmapWhoisReport-blah.txt.";
 	print "\n";
-	print "\n -noloop:\t Don't loop (ie, stop each server after one connection).";
+	print "\n -noloop\t Don't loop (ie, stop each server after one connection).";
 	print "\n -no_multiplexing \t Turn off multiplexing to save memory (not reccomended)";
 	print "\n -noblocking:\t Turn off blocking mode. Very useful for telnet stuff";
 	print "\n -maxreq:nn:\t Allows nn connections per server. Default is 2.";
@@ -2696,7 +2756,40 @@ sub DoTCPServerStuff()	{
 	$verbal_report .= "\n Us: (our own IP) port $server_port";
 	$verbal_report .= "\n________________________________________________________________\n";
 	WriteReportFile($verbal_report, $temp_report_filename);
+	
+	# The 2024 email stuff should go here!
+	# Will have to make it an external program, python I suppose
+	#WriteReportFile ("about to do email test", "email_debug0.txt");
+	if ($email_mode == "True")	{
+		#WriteReportFile ("tripped email mode", "email_debug1.txt");
+		
+		$cmd = "python3 mail_report.py ";  
+		$cmd .= $from_address;
+		$cmd .= " ";
+		$cmd .= $to_address;
+		$cmd .= " ";
+		$cmd .= $smtp_server;
+		$cmd .= " ";
+		$cmd .= $smtp_port;
+		$cmd .= " ";
+		$cmd .= $email_password;
+		$cmd .= " ";
+		#$cmd .= $verbal_report; #BUG!
+		#$cmd .= "email_debug1.txt"
+		$cmd .= $temp_report_filename;
+		# What I have to do is write the email report to a text file with a random number (in case of concurrent writes - perhaps the pid?) and then read it in when running the Python mailer....
+		# Hang about - the system already does this!
+		#WriteReportFile($cmd, "email_debug1.txt");						
+		print ("Sending this to email subprogram. ",$cmd);
+		$command = `$cmd`;
+		print ("I'm back! Just send the email (or tried to)");
+		#WriteReportFile($cmd, "email_debug2.txt");
+		#WriteReportFile($command,"email_debug3.txt");
 
+	}
+	#
+	# End of 2024 bit
+	
 	until ($timeleft == 0)	{
 
 		print STDOUT "\n\n ******** IN THE MAIN TCP SERVER LOOP **************";

@@ -1,0 +1,4 @@
+from_email_address.com
+to_email_address.com
+smtp.emailserver.com
+25
